@@ -1,0 +1,136 @@
+C_gcc_9.c: In function ‘_mm256_rsqrt_pd’:
+C_gcc_9.c:15:1: warning: AVX vector return without AVX enabled changes the ABI [-Wpsabi]
+   15 | static inline __m256d _mm256_rsqrt_pd(__m256d s) {
+      | ^~~~~~
+C_gcc_9.c:15:23: note: the ABI for passing parameters with 32-byte alignment has changed in GCC 4.6
+   15 | static inline __m256d _mm256_rsqrt_pd(__m256d s) {
+      |                       ^~~~~~~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/13/include/immintrin.h:43,
+                 from /usr/lib/gcc/x86_64-linux-gnu/13/include/x86intrin.h:32,
+                 from C_gcc_9.c:4:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:25:9: note: called from here
+   25 |     x = _mm256_mul_pd(x, y);
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:360:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_sub_pd’: target specific option mismatch
+  360 | _mm256_sub_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:24:9: note: called from here
+   24 |     y = _mm256_sub_pd(a, b);
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:360:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_sub_pd’: target specific option mismatch
+  360 | _mm256_sub_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:23:9: note: called from here
+   23 |     b = _mm256_sub_pd(b, _mm256_set1_pd(1.875));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:1320:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_set1_pd’: target specific option mismatch
+ 1320 | _mm256_set1_pd (double __A)
+      | ^~~~~~~~~~~~~~
+C_gcc_9.c:23:9: note: called from here
+   23 |     b = _mm256_sub_pd(b, _mm256_set1_pd(1.875));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:22:17: note: called from here
+   22 |     __m256d b = _mm256_mul_pd(y, _mm256_set1_pd(1.25));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:1320:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_set1_pd’: target specific option mismatch
+ 1320 | _mm256_set1_pd (double __A)
+      | ^~~~~~~~~~~~~~
+C_gcc_9.c:22:17: note: called from here
+   22 |     __m256d b = _mm256_mul_pd(y, _mm256_set1_pd(1.25));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:21:9: note: called from here
+   21 |     a = _mm256_mul_pd(a, y);
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:20:17: note: called from here
+   20 |     __m256d a = _mm256_mul_pd(y, _mm256_set1_pd(0.375));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:1320:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_set1_pd’: target specific option mismatch
+ 1320 | _mm256_set1_pd (double __A)
+      | ^~~~~~~~~~~~~~
+C_gcc_9.c:20:17: note: called from here
+   20 |     __m256d a = _mm256_mul_pd(y, _mm256_set1_pd(0.375));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:479:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_cvtps_pd’: target specific option mismatch
+  479 | _mm256_cvtps_pd (__m128 __A)
+      | ^~~~~~~~~~~~~~~
+C_gcc_9.c:18:17: note: called from here
+   18 |     __m256d x = _mm256_cvtps_pd(q);
+      |                 ^~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:467:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_cvtpd_ps’: target specific option mismatch
+  467 | _mm256_cvtpd_ps (__m256d __A)
+      | ^~~~~~~~~~~~~~~
+C_gcc_9.c:16:16: note: called from here
+   16 |     __m128 q = _mm256_cvtpd_ps(s);
+      |                ^~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:25:9: note: called from here
+   25 |     x = _mm256_mul_pd(x, y);
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:360:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_sub_pd’: target specific option mismatch
+  360 | _mm256_sub_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:24:9: note: called from here
+   24 |     y = _mm256_sub_pd(a, b);
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:360:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_sub_pd’: target specific option mismatch
+  360 | _mm256_sub_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:23:9: note: called from here
+   23 |     b = _mm256_sub_pd(b, _mm256_set1_pd(1.875));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:1320:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_set1_pd’: target specific option mismatch
+ 1320 | _mm256_set1_pd (double __A)
+      | ^~~~~~~~~~~~~~
+C_gcc_9.c:23:9: note: called from here
+   23 |     b = _mm256_sub_pd(b, _mm256_set1_pd(1.875));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:22:17: note: called from here
+   22 |     __m256d b = _mm256_mul_pd(y, _mm256_set1_pd(1.25));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:1320:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_set1_pd’: target specific option mismatch
+ 1320 | _mm256_set1_pd (double __A)
+      | ^~~~~~~~~~~~~~
+C_gcc_9.c:22:17: note: called from here
+   22 |     __m256d b = _mm256_mul_pd(y, _mm256_set1_pd(1.25));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:21:9: note: called from here
+   21 |     a = _mm256_mul_pd(a, y);
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:312:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_mul_pd’: target specific option mismatch
+  312 | _mm256_mul_pd (__m256d __A, __m256d __B)
+      | ^~~~~~~~~~~~~
+C_gcc_9.c:20:17: note: called from here
+   20 |     __m256d a = _mm256_mul_pd(y, _mm256_set1_pd(0.375));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:1320:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_set1_pd’: target specific option mismatch
+ 1320 | _mm256_set1_pd (double __A)
+      | ^~~~~~~~~~~~~~
+C_gcc_9.c:20:17: note: called from here
+   20 |     __m256d a = _mm256_mul_pd(y, _mm256_set1_pd(0.375));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxintrin.h:479:1: error: inlining failed in call to ‘always_inline’ ‘_mm256_cvtps_pd’: target specific option mismatch
+  479 | _mm256_cvtps_pd (__m128 __A)
+      | ^~~~~~~~~~~~~~~
+C_gcc_9.c:18:17: note: called from here
+   18 |     __m256d x = _mm256_cvtps_pd(q);
+      |                 ^~~~~~~~~~~~~~~~~~
