@@ -1,0 +1,39 @@
+bench_c.c: 2.23 seconds
+benchc_2.c: 2.82 seconds
+benchc_3.c: 2.58 seconds
+rust_build1: 3.42 seconds
+rust_build2: 2.59 seconds
+rust_build3: 3.34 seconds
+bench_cpp1.cpp: 3.43 seconds
+bench_cpp2.cpp: 2.58 seconds
+Gobench1.go: 3.83 seconds
+Gobench2.go: 3.34 seconds
+Gobench3.go: 2.38 seconds
+ocamelbench.ml: 2.89 seconds
+pythonbench.py: 167.77 seconds
+
+--- Summary by Language ---
+Python:
+  Total Time: 167.77 s
+  Average Time: 167.77 s
+  Best Time: 167.77 s (pythonbench.py)
+C:
+  Total Time: 7.63 s
+  Average Time: 2.54 s
+  Best Time: 2.23 s (bench_c.c)
+Go:
+  Total Time: 9.56 s
+  Average Time: 3.19 s
+  Best Time: 2.38 s (Gobench3.go)
+C++:
+  Total Time: 6.01 s
+  Average Time: 3.01 s
+  Best Time: 2.58 s (bench_cpp2.cpp)
+OCaml:
+  Total Time: 2.89 s
+  Average Time: 2.89 s
+  Best Time: 2.89 s (ocamelbench.ml)
+Rust:
+  Total Time: 9.35 s
+  Average Time: 3.12 s
+  Best Time: 2.59 s (rust_build2)

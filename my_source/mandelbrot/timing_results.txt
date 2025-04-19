@@ -1,0 +1,31 @@
+bench2.c: 1.67 seconds
+benchc.c: 2.01 seconds
+rustbench: 2.14 seconds
+rustbench2: 0.83 seconds
+benchcpp.cpp: 1.72 seconds
+benchcpp2.cpp: 1.59 seconds
+gobench.go: 5.00 seconds
+gobench2.go: 4.77 seconds
+pythonbench.py: 159.07 seconds
+
+--- Summary by Language ---
+Python:
+  Total Time: 159.07 s
+  Average Time: 159.07 s
+  Best Time: 159.07 s (pythonbench.py)
+C:
+  Total Time: 3.68 s
+  Average Time: 1.84 s
+  Best Time: 1.67 s (bench2.c)
+Go:
+  Total Time: 9.76 s
+  Average Time: 4.88 s
+  Best Time: 4.77 s (gobench2.go)
+C++:
+  Total Time: 3.31 s
+  Average Time: 1.65 s
+  Best Time: 1.59 s (benchcpp2.cpp)
+Rust:
+  Total Time: 2.96 s
+  Average Time: 1.48 s
+  Best Time: 0.83 s (rustbench2)
