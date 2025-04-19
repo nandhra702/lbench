@@ -1,0 +1,8 @@
+#rust allocators in the wild
+https://github.com/antoniosarosi/rulloc
+https://github.com/verus-lang/verified-memory-allocator
+
+#elfmalloc(coolest thing for now)
+https://github.com/ezrosent/allocators-rs/tree/master/elfmalloc
+#allocator design
+https://github.com/ezrosent/allocators-rs/blob/master/info/elfmalloc.md
