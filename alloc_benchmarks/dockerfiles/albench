@@ -1,0 +1,33 @@
+# Filename: Dockerfile
+FROM debian:bullseye
+
+RUN apt update && apt install -y \
+    build-essential cmake git curl wget \
+    python3 python3-pip \
+    libtool autoconf automake \
+    pkg-config unzip
+
+# Install jemalloc
+RUN git clone https://github.com/jemalloc/jemalloc.git /opt/jemalloc && \
+    cd /opt/jemalloc && \
+    ./autogen.sh && \
+    make -j$(nproc) && make install
+
+# Install mimalloc
+RUN git clone https://github.com/microsoft/mimalloc.git /opt/mimalloc && \
+    cd /opt/mimalloc && \
+    cmake -Bbuild -H. -DMI_BUILD_TESTS=OFF && \
+    cmake --build build --config Release && \
+    cmake --install build
+
+# Optional: Install tcmalloc (via gperftools)
+RUN apt install -y libgoogle-perftools-dev
+
+# Update linker cache
+RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/customlibs.conf && ldconfig
+
+# Create benchmark directory
+WORKDIR /bench
+COPY . /bench
+
+CMD ["/bin/bash"]
