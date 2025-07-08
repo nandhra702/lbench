@@ -1,0 +1,12 @@
+C/bs1c: Failed to execute
+C/bs2c: Failed to execute
+C++/bs1cpp: Failed to execute
+C++/bs2cpp: Failed to execute
+Go/bs1: Failed to execute
+Go/bs2: Failed to execute
+Rust/bs1: Failed to execute
+Rust/bs2: Failed to execute
+
+=== Averages and Best Times ===
+
+=== Ranking by Average Time (Fastest to Slowest) ===

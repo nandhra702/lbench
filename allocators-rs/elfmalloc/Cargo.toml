@@ -1,0 +1,67 @@
+# Copyright 2017-2018 the authors. See the 'Copyright and license' section of the
+# README.md file at the top-level directory of this repository.
+#
+# Licensed under the Apache License, Version 2.0 (the LICENSE-APACHE file) or
+# the MIT license (the LICENSE-MIT file) at your option. This file may not be
+# copied, modified, or distributed except according to those terms.
+
+[package]
+name = "elfmalloc"
+version = "0.1.0"
+authors = ["Eli Rosenthal <ezrosenthal@gmail.com>", "Joshua Liebow-Feeser <hello@joshlf.com>"]
+license = "Apache-2.0/MIT"
+description = "A fast, concurrent, general-purpose allocator."
+
+keywords = ["allocator"]
+categories = ["caching", "concurrency", "memory-management", "no-std"]
+
+readme = "README.md"
+documentation = "https://docs.rs/elfmalloc"
+repository = "https://github.com/ezrosent/allocators-rs/tree/master/elfmalloc"
+
+exclude = ["appveyor.sh", "travis.sh"]
+
+[[bin]]
+name = "bench_vec"
+path = "src/bin/bench_vec.rs"
+[[bin]]
+name = "bench"
+path = "src/bin/bench.rs"
+
+[features]
+default = []
+# TODO: Rename these features to use dashes instead of underscores
+prime_schedules = ["bagpipe/prime_schedules"]
+huge_segments = ["bagpipe/huge_segments"]
+no_lazy_region = []
+local_cache = []
+use_default_allocator = []
+print_stats = []
+magazine_layer = []
+# Limit the amount of memory used by tests to avoid running out.
+# This is used primarily in Travis.
+low-memory-tests = []
+# Implement the C allocation API (malloc, free, etc) by implementing the
+# malloc-bind crate's Malloc trait. This feature will enable certain
+# optimizations that will make the C API faster but result in worse memory
+# usage for the Rust API (the Alloc trait).
+c-api = []
+
+[dependencies]
+alloc-fmt = { path = "../alloc-fmt" }
+alloc-tls = { path = "../alloc-tls" }
+bagpipe = { path = "../bagpipe" }
+bsalloc = { path = "../bsalloc" }
+lazy_static = "1.0.0"
+libc = "0.2"
+log = "0.3.8"
+malloc-bind = { path = "../malloc-bind" }
+mmap-alloc = { path = "../mmap-alloc", features = ["large-align"] }
+num_cpus = "1.5"
+smallvec = "0.4.3"
+sysconf = ">= 0.3.3"
+
+[dev-dependencies]
+env_logger = "0.4.3"
+
+

@@ -1,0 +1,47 @@
+# Copyright 2017-2018 the authors. See the 'Copyright and license' section of the
+# README.md file at the top-level directory of this repository.
+#
+# Licensed under the Apache License, Version 2.0 (the LICENSE-APACHE file) or
+# the MIT license (the LICENSE-MIT file) at your option. This file may not be
+# copied, modified, or distributed except according to those terms.
+
+[package]
+name = "slab-alloc"
+version = "0.1.1"
+authors = ["Joshua Liebow-Feeser <hello@joshlf.com>", "Eli Rosenthal <ezrosenthal@gmail.com>"]
+license = "Apache-2.0/MIT"
+description = "A fast, single-threaded object allocator."
+
+keywords = ["allocator", "cache", "object", "slab"]
+categories = ["algorithms", "caching", "memory-management", "no-std"]
+
+readme = "README.md"
+documentation = "https://docs.rs/slab-alloc"
+repository = "https://github.com/ezrosent/allocators-rs/tree/master/slab-alloc"
+
+exclude = ["appveyor.sh", "travis.sh"]
+
+[profile.test]
+opt-level = 3
+
+[features]
+# NOTE: no-std and no-os are not currently supported; see
+# https://github.com/ezrosent/allocators-rs/issues/2 for
+# progress towards no-std and no-os.
+default = ["std", "os"]
+std = ["os"]
+os = []
+
+build-ignored-tests = []
+use-stdlib-hashmap = []
+no-coloring = []
+hashmap-no-resize = []
+hashmap-no-coalesce = []
+
+[dependencies]
+lazy_static = { version = "1.0.0", features = ["spin_no_std"] }
+mmap-alloc = { path = "../mmap-alloc" }
+object-alloc = { path = "../object-alloc" }
+object-alloc-test = { path = "../object-alloc-test" }
+rand = "0.3"
+sysconf = ">= 0.3.3"

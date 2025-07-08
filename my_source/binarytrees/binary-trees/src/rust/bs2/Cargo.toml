@@ -1,0 +1,9 @@
+[package]
+name = "bs2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rayon = "1.8"
+bumpalo = "3.14"
+typed-arena = "2.0"

@@ -1,0 +1,36 @@
+# Copyright 2017-2018 the authors. See the 'Copyright and license' section of the
+# README.md file at the top-level directory of this repository.
+#
+# Licensed under the Apache License, Version 2.0 (the LICENSE-APACHE file) or
+# the MIT license (the LICENSE-MIT file) at your option. This file may not be
+# copied, modified, or distributed except according to those terms.
+
+[package]
+name = "mmap-alloc"
+version = "0.2.0"
+authors = ["Joshua Liebow-Feeser <hello@joshlf.com>"]
+license = "Apache-2.0/MIT"
+description = "A simple allocator backed by memory mappings."
+
+keywords = ["allocator", "mmap", "virtualalloc", "memory"]
+categories = ["memory-management", "no-std"]
+
+readme = "README.md"
+documentation = "https://docs.rs/mmap-alloc"
+repository = "https://github.com/ezrosent/allocators-rs/tree/master/mmap-alloc"
+
+exclude = ["appveyor.sh", "travis.sh"]
+
+[features]
+# Support alignments larger than a page size by mapping a larger region
+# and then unmapping all but a properly-aligned subset of the region.
+large-align = []
+
+[dependencies]
+errno = "0.2"
+kernel32-sys = "0.2"
+# use no_std libc
+libc = { version = "0.2", default-features = false }
+object-alloc = { path = "../object-alloc" }
+sysconf = ">= 0.3.3"
+winapi = "0.2"

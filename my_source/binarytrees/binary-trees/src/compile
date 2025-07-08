@@ -1,0 +1,12 @@
+c
+gcc bs1.c -o bs1c -I/usr/include/apr-1.0 -lapr-1
+
+cpp
+g++ bs1.cpp -pipe -O3 -fomit-frame-pointer -march=ivybridge -std=gnu++17 -ltbb 
+
+haskell
+ghc -O2 -threaded -rtsopts -with-rtsopts="-N" -package parallel -package ghc-compact bs1.hs
+
+zig
+zig build -Doptimize=ReleaseFast
+./zig-out/bin/bs1 21

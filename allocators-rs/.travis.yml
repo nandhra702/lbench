@@ -1,0 +1,43 @@
+# Copyright 2017-2018 the authors. See the 'Copyright and license' section of the
+# README.md file at the top-level directory of this repository.
+#
+# Licensed under the Apache License, Version 2.0 (the LICENSE-APACHE file) or
+# the MIT license (the LICENSE-MIT file) at your option. This file may not be
+# copied, modified, or distributed except according to those terms.
+
+language: rust
+cache: cargo
+rust:
+  - nightly
+  - beta
+  - stable
+os:
+  - linux
+  - osx
+# Load travis-cargo
+before_script:
+  - |
+      pip2 install 'travis-cargo<0.2' --user &&
+      export PATH=`python -m site --user-base`/bin:$PATH
+script:
+  - |
+      # Disable rm override of cd, pushd, and popd;
+      # see https://github.com/travis-ci/travis-ci/issues/8703
+      if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+          unset -f cd;
+          unset -f pushd;
+          unset -f popd;
+      fi
+      set -x; set -e; for script in */travis.sh; do
+          dir=$(dirname "$script");
+          file=$(basename "$script");
+          pushd "$dir";
+          ./$file;
+          popd;
+      done
+  - ./test-scripts/check-copyright-comments.sh
+
+env:
+  global:
+    # Override the default `--features unstable` used for the nightly branch
+    - TRAVIS_CARGO_NIGHTLY_FEATURE=""

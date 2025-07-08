@@ -16,23 +16,25 @@ run_and_time() {
     CMD=$2
     LANG=$3
 
-    echo "Running $NAME ..."
-    START=$(date +%s.%N)
-    eval "$CMD" > /dev/null
-    END=$(date +%s.%N)
+    for i in {1..5}; do
+        echo "Running $NAME (Run #$i)..."
+        START=$(date +%s.%N)
+        eval "$CMD" > /dev/null
+        END=$(date +%s.%N)
 
-    DURATION=$(echo "$END - $START" | bc)
-    printf "%s: %.2f seconds\n" "$NAME" "$DURATION" | tee -a "$OUTFILE"
+        DURATION=$(echo "$END - $START" | bc)
+        printf "%s Run #%d: %.4f seconds\n" "$NAME" "$i" "$DURATION" | tee -a "$OUTFILE"
 
-    # Sum for average
-    lang_times[$LANG]=$(echo "${lang_times[$LANG]:-0} + $DURATION" | bc)
-    lang_counts[$LANG]=$(( ${lang_counts[$LANG]:-0} + 1 ))
+        # Sum for average
+        lang_times[$LANG]=$(echo "${lang_times[$LANG]:-0} + $DURATION" | bc)
+        lang_counts[$LANG]=$(( ${lang_counts[$LANG]:-0} + 1 ))
 
-    # Best time tracker
-    if [[ -z "${lang_best_times[$LANG]}" || 1 -eq "$(echo "$DURATION < ${lang_best_times[$LANG]}" | bc)" ]]; then
-        lang_best_times[$LANG]=$DURATION
-        lang_best_names[$LANG]=$NAME
-    fi
+        # Best time tracker
+        if [[ -z "${lang_best_times[$LANG]}" || 1 -eq "$(echo "$DURATION < ${lang_best_times[$LANG]}" | bc)" ]]; then
+            lang_best_times[$LANG]=$DURATION
+            lang_best_names[$LANG]="$NAME (Run #$i)"
+        fi
+    done
 }
 
 # --- C Programs ---
@@ -79,7 +81,7 @@ run_and_time "pythonbench.py" "python3 pythonbench.py $INPUT" "Python"
     echo "--- Summary by Language ---"
     for lang in "${!lang_times[@]}"; do
         avg=$(echo "${lang_times[$lang]} / ${lang_counts[$lang]}" | bc -l)
-        printf "%s:\n  Total Time: %.2f s\n  Average Time: %.2f s\n  Best Time: %.2f s (%s)\n" \
+        printf "%s:\n  Total Time: %.4f s\n  Average Time: %.4f s\n  Best Time: %.4f s (%s)\n" \
             "$lang" "${lang_times[$lang]}" "$avg" "${lang_best_times[$lang]}" "${lang_best_names[$lang]}"
     done
 } >> "$OUTFILE"
